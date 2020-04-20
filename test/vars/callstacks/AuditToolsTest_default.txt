@@ -1,0 +1,8 @@
+   auditTools.call()
+      auditTools.node(groovy.lang.Closure)
+         auditTools.sh(
+        git version
+        docker version
+        dotnet --list-sdks
+        dotnet --list-runtimes
+      )
