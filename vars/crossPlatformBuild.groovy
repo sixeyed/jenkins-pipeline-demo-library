@@ -18,7 +18,7 @@ def call(Map config) {
     pipeline {
         agent any
         environment {
-            REPO_NAME = config.repoName
+            REPO_NAME = "${config.repoName}"
             DOCKER_LINUX_SERVER = 'up-ub1604.sixeyed'            
             DOCKER_WINDOWS_SERVER = 'up-win2019.sixeyed'
         }
@@ -31,8 +31,8 @@ def call(Map config) {
                     stage('linux-amd64') {
                         environment {
                             BUILD_CONTEXT = getBuildContext(config, env.STAGE_NAME)
-                            TAG = env.STAGE_NAME
-                            DOCKER_SERVER = $DOCKER_LINUX_SERVER
+                            TAG = "$STAGE_NAME"
+                            DOCKER_SERVER = "$DOCKER_LINUX_SERVER"
                         }                   
                         steps {
                             script{
@@ -43,8 +43,8 @@ def call(Map config) {
                     stage('windows-amd64') {  
                         environment {
                             BUILD_CONTEXT = getBuildContext(config, env.STAGE_NAME)
-                            TAG = env.STAGE_NAME
-                            DOCKER_SERVER = $DOCKER_WINDOWS_SERVER
+                            TAG = "$STAGE_NAME"
+                            DOCKER_SERVER = "$DOCKER_WINDOWS_SERVER"
                         }                        
                         steps {
                             script {                                
