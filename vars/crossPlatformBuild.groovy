@@ -53,6 +53,11 @@ def call(Map config) {
                         }
                     }
                 }
+                stage('notify') {
+                    steps{
+                        echo "https://hub.docker.com/r/$REPO_NAME"
+                    }
+                }
             }
         }
     }
