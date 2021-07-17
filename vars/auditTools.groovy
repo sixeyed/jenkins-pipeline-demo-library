@@ -1,6 +1,6 @@
 def call() {
     node {
-      sh '''
+      bat '''
         git version
         docker version
         dotnet --list-sdks
